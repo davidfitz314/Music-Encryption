@@ -1,5 +1,6 @@
 # Music-Encryption
 C++ Application
+
 Special Libraries used for glut drawings and windows media.
 
 Keys 1-7 are used for the piano and pressing them will play music and display a note on the screen.
