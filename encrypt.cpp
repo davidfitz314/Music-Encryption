@@ -59,7 +59,6 @@ char MyEncrypt::rotateForCaesar(char letter_in, int spaces)
 {
 	//find index of letter_in
 	//std::size_t found = this->alphabet.find(letter_in);
-	cout << "current letter " << letter_in << endl;
 	int found = -1;
 	for (int i = 0; i<alphabet.size();i++){
 		if (alphabet[i] == letter_in){
@@ -68,20 +67,18 @@ char MyEncrypt::rotateForCaesar(char letter_in, int spaces)
 	}
 
 	if (found == -1){
-		std::cout << "Letter Not Found: " << '\n';
 		return '$';
 	}
 
 	//test if index + spaces > end of alphabet
 	//if greater take index+spaces - alphabet length
-	cout << "found is " << found+spaces << endl;
 	if ((found+spaces)>=this->alphabet.size())
 	{
-		cout << "test 1" <<endl;
+
 		return this->alphabet[found+spaces-alphabet.size()];
 	} else {
 		//else rotate letter from index + spaces
-		cout << "test 1.2" << endl;
+
 		return this->alphabet[found+spaces];
 	}
 }
@@ -96,13 +93,13 @@ char MyEncrypt::rotateBackCaesar(char letter_in, int spaces){
 	}
 
 	if (found == -1){
-		std::cout << "Letter Not Found: " << '\n';
+
 		return '\n';
 	}
 	int moveLeft = found - spaces;
 	//test if index - spaces > 0
 	//if greater take index-spaces + alphabet length
-	cout << "found is " << found+spaces << endl;
+	
 	if (moveLeft<0)
 	{
 		return this->alphabet[alphabet.size()+(found-spaces)];
@@ -144,23 +141,21 @@ void MyEncrypt::caesar(string key_in)
 				}
 			}
 		}
-		cout << "enc level is " << encryptionLocation << endl;
 		//perform encryption based on the index encrpytion location
 		//encrypt based on encryption location and move value number spaces over.
 		int tempValue = 0;
 		tempValue = AlphabetValue(key_in[encryptionLocation]);
-		cout << "test 2" << endl;
+		
 		char tempEncrypted;
 		tempEncrypted = this->rotateForCaesar(fileStore[i],tempValue); 
 		if (tempEncrypted == '$' && fileStore.size()-i<7){
 
 		} else {
-			cout << "test 3" << endl;
+		
 			caesarEncrypted << tempEncrypted;
 		}
 	}
 	caesarEncrypted.close();
-	cout << "block size is " << key_size << endl;
 }
 
 void MyEncrypt::caesarDecrypt(string key_in)
@@ -207,5 +202,4 @@ void MyEncrypt::caesarDecrypt(string key_in)
 		}
 	}
 	caesarEncrypted.close();
-	cout << "block size is " << key_size << endl;
 }
